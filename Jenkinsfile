@@ -28,7 +28,7 @@ pipeline {
 
     stage('Run Unit Tests') {
       steps {
-        sh 'pytest tests/'
+        sh 'PYTHONPATH=. pytest tests/'
       }
     }
   }
