@@ -33,12 +33,16 @@ pipeline {
     }
 
     stage('SonarQube Analysis') {
+      environment {
+        PATH = "/opt/sonar-scanner/bin:$PATH"
+      }
       steps {
         withSonarQubeEnv('MySonarQubeServer') {
           sh 'sonar-scanner'
         }
       }
     }
+
   }
 
   post {
