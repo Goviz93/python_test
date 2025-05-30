@@ -31,6 +31,14 @@ pipeline {
         sh 'PYTHONPATH=. pytest tests/'
       }
     }
+
+    stage('SonarQube Analysis') {
+      steps {
+        withSonarQubeEnv('MySonarQubeServer') {
+          sh 'sonar-scanner'
+        }
+      }
+    }
   }
 
   post {
